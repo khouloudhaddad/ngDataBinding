@@ -9,7 +9,6 @@ import { SharedService } from '../shared.service';
   selector: 'app-cards',
   standalone: true,
   imports: [FormsModule, CommonModule, CreateComponent],
-  providers: [SharedService],
   templateUrl: './cards.component.html',
   styleUrl: './cards.component.css'
 })

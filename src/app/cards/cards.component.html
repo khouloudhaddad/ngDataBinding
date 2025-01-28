@@ -1,18 +1,22 @@
-<div class="container my-5">
-  <h1 class="text-center text-light fw-bold mb-5">My Heros Dashboard</h1>
-  <app-create></app-create>
+<div class="row">
+  <div class="col-md-3" *ngFor="let hero of service.heros">
+    <div
+      [ngClass]="{
+        'card p-1': true,
+        'bg-danger': hero.power > 100,
+        'bg-secondary': hero.power > 50 && hero.power < 100,
+        'bg-dark': hero.power < 50
+      }"
+    >
+      <div class="card-image">
+        <img [src]="hero.image" alt="" class="img-fluid rounded" />
+      </div>
 
-  <div class="row">
-    <div class="col-md-3" *ngFor="let hero of service.heros">
-      <div [ngClass]="{'card p-1': true, 'bg-danger': hero.power > 100, 'bg-secondary': hero.power > 50 && hero.power <100, 'bg-dark': hero.power < 50}">
-        <div class="card-image">
-          <img [src]="hero.image" alt="" class="img-fluid rounded">
-        </div>
-
-        <div class="card-body">
-          <h5 class="text-dark fw-bold mb-3 border-bottom text-uppercase">{{ hero.name }}</h5>
-          <p>{{ hero.power }}</p>
-        </div>
+      <div class="card-body">
+        <h5 class="text-dark fw-bold mb-3 border-bottom text-uppercase">
+          {{ hero.name }}
+        </h5>
+        <p>{{ hero.power }}</p>
       </div>
     </div>
   </div>

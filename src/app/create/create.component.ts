@@ -6,7 +6,6 @@ import { SharedService } from '../shared.service';
   selector: 'app-create',
   standalone: true,
   imports: [FormsModule],
-  providers: [SharedService],
   templateUrl: './create.component.html',
   styleUrl: './create.component.css'
 })
