@@ -1,31 +1,34 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SharedService } from '../shared.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-create',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, HttpClientModule],
+  providers: [SharedService],
   templateUrl: './create.component.html',
-  styleUrl: './create.component.css'
+  styleUrl: './create.component.css',
 })
 export class CreateComponent {
-
-  constructor(public service: SharedService ){}
+  constructor(public _shared: SharedService) {}
 
   hero = {
-    name: "",
+    name: '',
     power: 0,
-    image: ""
-  }
+    image: '',
+  };
 
-
-  createHero(){
-    this.service.heros.push(this.hero);
-    this.hero = {
-      name: "",
-      power: 0,
-      image: ""
-    }
+  createHero() {
+    this._shared.createHero(this.hero)
+    .subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }
