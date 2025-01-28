@@ -1,34 +1,18 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common'
+import { CreateComponent } from '../create/create.component';
+import { SharedService } from '../shared.service';
 
 
 @Component({
   selector: 'app-cards',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, CreateComponent],
+  providers: [SharedService],
   templateUrl: './cards.component.html',
   styleUrl: './cards.component.css'
 })
 export class CardsComponent {
-
-  hero = {
-    name: "",
-    power: 0,
-    image: ""
-  }
-
-  heros : any[] = [];
-
-  createHero(){
-    this.heros.push(this.hero);
-    this.hero = {
-      name: "",
-      power: 0,
-      image: ""
-    }
-  }
-
-
-
+  constructor(public service: SharedService){}
 }
